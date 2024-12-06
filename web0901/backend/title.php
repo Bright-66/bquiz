@@ -28,26 +28,31 @@
                     foreach($rows as $row){
                     ?>
                     <tr>
-                        <td width="45%">
+                        <td>
                             <img src="./upload/<?=$row['img'];?>" style="width:300px;height:30px;">
                         </td>
-                        <td width="23%"><?=$row['text'];?></td>
-                        <td width="7%">
-                            <input type="radio" name="sh" value="<?=$row['id'];?>">
+                        <td>
+                            <input type="text" name="text[]" value="<?=$row['text'];?>">
+                            <!-- 使用text[]陣列 目的為進行"多筆編輯"時,使其"多筆變更的資料"能放在陣列中!  -->
                         </td>
-                        <td width="7%">
-                            <input type="checkbox" name="del" value="<?=$row['id'];?>">
+                        <td>
+                            <input type="radio" name="sh" value="<?=$row['id'];?>" <?=($row['sh']==1)?'checked':'';?>>
+                            <!-- "顯示"的判斷:如果sh值為"1"顯示 -->
+                        </td>
+                        <td>
+                            <input type="checkbox" name="del[]" value="<?=$row['id'];?>">
                         </td>
                         <td>
                             <input type="button" value="更新圖片">
                         </td>
+                        <input type="hidden" name="id[]" value="<?=$row['id'];?>">
                     </tr>
                     <?php
                     }
                     ?>
                 </tbody>
             </table>
-            <table style="margin-top:40px; width:70%;">
+            <table style=" margin-top:40px; width:70%;">
                 <tbody>
                     <tr>
                         <td width="200px">
