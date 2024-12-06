@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: lightblue;
+            color: goldenrod;
+            /* text-align: center; */
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+
+        button {
+            width: 250px;
+            color: rgb(253, 133, 93);
+            font-size: x-large;
+            font-weight: bolder;
+            border: 10px;
+            border-style: dotted;
+            border-radius: 30%;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <a href="./getData.php"></a> -->
+    <button type="button" id="myBtn">我的價值觀</button>
+
+    <!-- <h1 id="myH1">我的價值觀</h1> -->
+    <h2 id="myH2">名字</h2>
+    <h2 id="myH3">電話</h2>
+    <h2 id="myH4">喜歡的話</h2>
+
+    <!-- ajax ? -->
+    <!-- jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        $(document).ready(function () {
+            // 1.bind
+            // const myH1 = $('#myH1');
+            const myH2 = $('#myH2');
+            const myH3 = $('#myH3');
+            const myH4 = $('#myH4');
+            const myBtn = $('#myBtn');
+
+            // 2.action
+            myBtn.click(function (e) {
+                // ajax
+                $.ajax({
+                    type: "get",
+                    url: "./getData.php",
+                    // data: "data",
+                    dataType: "json",
+                    success: function (response) {
+                        console.log('response', response);
+                        // console.log('response typeof', typeof (response));
+
+                        console.log('response.name', response.name);
+                        console.log('response.mobile', response.mobile);
+                        console.log('response.word', response.word);
+
+                        myH2.text(response.name);
+                        myH3.text(response.mobile);
+                        myH4.text(response.word);
+
+                    }
+                });
+
+            });
+
+
+
+        });
+    </script>
+
+</body>
+
+</html>
