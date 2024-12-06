@@ -84,8 +84,7 @@ class DB{
         //echo $sql;  
         return $this->pdo->exec($sql);
     }
-
-    
+ 
     /**
      * 把陣列轉成條件字串陣列
      */
@@ -148,7 +147,7 @@ class DB{
 
  function q($sql){
     $pdo=new PDO("mysql:host=localhost;charset=utf8;dbname=db10",'root','');
-    return $this->pdo->query($sql)->fetchAll();
+    return $pdo->query($sql)->fetchAll();
 } 
 
 function dd($array){
