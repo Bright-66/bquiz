@@ -3,6 +3,8 @@ include_once "db.php";
 
 if(isset($_POST['id'])){
     foreach($_POST['id'] as $idx => $id){
+        // $idx 為"陣列的索引" 變數
+         
         if(isset($_POST['del']) && in_array($id,$_POST['del'])){
             $Title->del($id);
         }else{

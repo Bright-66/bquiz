@@ -164,3 +164,5 @@ $Title=new DB('titles');
 // 宣告一個變數 = 資料庫中的新資料表"titles"
 
 $Ad=new DB('ads');
+$Image=new DB('images');
+$Mvim=new DB('mvims');
