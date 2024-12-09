@@ -23,9 +23,17 @@
                         <td></td>
                     </tr>
                     <?php
-                    $rows=$Image->all();
-                    foreach($rows as $row){
-                    ?>
+// 做分頁顯示的code
+
+$div=3;
+$total=$Image->count();
+$pages=ceil($total/$div);
+$now=$_GET['p']??1;
+$start=($now-1)*$div;
+
+$rows=$Image->all(" limit $start,$div");
+foreach($rows as $row){
+?>
                     <tr>
                         <td>
                             <img src="./upload/<?=$row['img'];?>" style="width:100px;height:68px;">
@@ -39,7 +47,7 @@
                         </td>
                         <td>
                             <input type="button"
-                                onclick="op(&#39;#cover&#39;,&#39;#cvr&#39;,&#39;./modal/upload_<?=$do;?>.php?id=<?=$row['id'];?>&#39;)"
+                                onclick="op('#cover','#cvr','./modal/upload_<?=$do;?>.php?id=<?=$row['id'];?>&table=<?=$do;?>')"
                                 value="更換圖片">
                         </td>
                         <input type="hidden" name="id[]" value="<?=$row['id'];?>">
@@ -49,6 +57,27 @@
                     ?>
                 </tbody>
             </table>
+            <div class="cent">
+                <?php
+                // 如果"現在的(頁數-1)>0",則顯示上一頁
+if(($now-1)>0){
+    $prev=$now-1;
+     echo "<a href='?do=$do&p=$prev'> < </a>";
+}
+
+for($i=1;$i<=$pages;$i++){
+    echo "<a href='?do=$do&p=$i'> ";
+echo $i;
+echo " </a>";
+}
+
+if(($now+1)<=$pages){
+    $next=$now+1;
+    echo "<a href='?do=$do&p=$next'> > </a>";
+}
+?>
+            </div>
+
             <table style="margin-top:40px; width:70%;">
                 <tbody>
                     <tr>
