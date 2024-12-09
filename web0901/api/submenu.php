@@ -2,7 +2,7 @@
 
 if(isset($_POST['id'])){
 foreach($_POST['id'] as $idx => $id){
-    if(isset($_POST['del']) && in_array($id.$_POST['del'])){
+    if(isset($_POST['del']) && in_array($id,$_POST['del'])){
         $Menu->del($id);
     }else{
         $row=$Menu->find($id);
