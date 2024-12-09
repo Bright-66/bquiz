@@ -25,7 +25,9 @@
                         <td></td>
                     </tr>
                     <?php
-                    $rows=$Menu->all();
+                    $rows=$Menu->all(['main_id'=>0]);
+                    // 抓取主選單(main[0]的資料
+                    
                     foreach($rows as $row){
                         // if($row['acc']!='admin'){
                             
