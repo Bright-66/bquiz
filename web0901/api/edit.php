@@ -16,6 +16,7 @@ if(isset($_POST['id'])){
                 case "title":
                      
                     $row['sh']=(isset($_POST['sh']) && $_POST['sh']==$id)?1:0;
+                    // 單選的
                     $row['text']=$_POST['text'][$idx];
                     
                     break;
@@ -28,6 +29,7 @@ if(isset($_POST['id'])){
                     $row['text']=$_POST['text'][$idx];
                     $row['href']=$_POST['href'][$idx];
                     $row['sh']=(isset($_POST['sh']) && in_array($id,$_POST['sh']))?1:0;
+                    // 可多選的,用in_array
                     break;
                 default:
                 
