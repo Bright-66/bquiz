@@ -55,11 +55,8 @@
 			}else{
 				include "./front/main.php";
 			}
-
 			//include (file_exists($file))?$file:"./front/main.php";
-
 		?>
-
             <div class=" di di ad" style="height:540px; width:23%; padding:0px; margin-left:22px; float:left; ">
                 <!--右邊-->
                 <button style="width:100%; margin-left:auto; margin-right:auto; margin-top:2px; height:50px;"
@@ -95,7 +92,6 @@
             <span class="t" style="line-height:123px;"><?=$Bottom->find(1)['bottom'];?></span>
         </div>
     </div>
-
 </body>
 
 </html>
