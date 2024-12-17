@@ -63,22 +63,45 @@
                     onclick="lo(&#39;?do=admin&#39;)">管理登入</button>
                 <div style="width:89%; height:480px;" class="dbor">
                     <span class="t botli">校園映象區</span>
+
+                    <div class='cent' id="up" onclick="pp(1)">
+                        <img src="./icon/up.jpg" alt="" srcset="">
+                    </div>
+                    <div class='cent'>
+                        <?php
+    $imgs=$Image->all(['sh'=>1]);
+    foreach($imgs as $idx => $img){
+                        echo "<div class='im' id='ssaa{$idx}'>";
+                        echo "<img src='./upload/{$img['img']}'
+                            style='width:150px;height:103px;border:3px solid gold'>";
+                        echo "</div>";
+                    }
+                    ?>
+                    </div>
+                    <div class='cent' id="dn" onclick="pp(2)">
+                        <img src="./icon/dn.jpg" alt="">
+
+                    </div>
+
                     <script>
                     var nowpage = 0,
-                        num = 0;
+                        num = <?=$Image->count(['sh'=>1]);?>;
 
                     function pp(x) {
                         var s, t;
                         if (x == 1 && nowpage - 1 >= 0) {
                             nowpage--;
                         }
-                        if (x == 2 && (nowpage + 1) * 3 <= num * 1 + 3) {
+                        if (x == 2 && (nowpage + 1) <= num * 1 - 3) {
+                            // num:顯示(sh=1)的圖片數
                             nowpage++;
                         }
                         $(".im").hide()
+                        // 所有圖片都先隱藏!
                         for (s = 0; s <= 2; s++) {
                             t = s * 1 + nowpage * 1;
                             $("#ssaa" + t).show()
+                            // 固定跑3次迴圈(show出"3張"圖片-並藉由if/else決定哪3張show出)
                         }
                     }
                     pp(1)
