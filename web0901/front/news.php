@@ -7,7 +7,6 @@
     <h3>更多最新消息資料區</h3>
     <hr>
     <?php
-
 			    $div=5;
 				$total=$News->count();
 				$pages=ceil($total/$div);
@@ -15,10 +14,12 @@
 				$start=($now-1)*$div;
 				$rows=$News->all(" limit $start,$div");
 				echo "<ol start='".($start+1)."'>";
-
+                // ol:新聞list 標題列從數字1.~ 開始列出 
                 foreach($rows as $row){
-                    echo "<li>";
+                    echo "<li>"; 
+                    // 叫出新聞文字內容
                     echo mb_substr($row['text'],0,20);
+                    // 字數從0~20
                         echo "<span class='all' style='display:none'>";
                         echo $row['text'];
                         echo "</span>";
@@ -29,7 +30,6 @@
 
     <div class="cent">
         <?php
-
                 if(($now-1)>0){
                     $prev=$now-1;
                     echo "<a href='?do=$do&p=$prev'> < </a>";
@@ -43,7 +43,6 @@
                     $next=$now+1;
                     echo "<a href='?do=$do&p=$next'> > </a>";
                 }
-
             ?>
     </div>
 </div>
