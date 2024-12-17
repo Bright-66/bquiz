@@ -1,31 +1,29 @@
 // JavaScript Document
-$(document).ready(function(e) {
-    $(".mainmu").mouseover(
-		function()
-		{
+$(document).ready(function (e) {
+	$(".mainmu").mouseover(
+		// 當滑鼠移入
+		function () {
 			$(this).children(".mw").stop().show()
 		}
 	)
 	$(".mainmu").mouseout(
-		function ()
-		{
+		// 當滑鼠移開
+		function () {
 			$(this).children(".mw").hide()
+			// this->mainmu , 的下一層:mw(children) 要隱藏
 		}
 	)
 });
-function lo(x)
-{
+function lo(x) {
 	location.replace(x)
 }
-function op(x,y,url)
-{
+function op(x, y, url) {
 	$(x).fadeIn()
-	if(y)
-	$(y).fadeIn()
-	if(y&&url)
-	$(y).load(url)
+	if (y)
+		$(y).fadeIn()
+	if (y && url)
+		$(y).load(url)
 }
-function cl(x)
-{
+function cl(x) {
 	$(x).fadeOut();
 }
