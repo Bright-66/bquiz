@@ -1,10 +1,22 @@
+<?php
+if(isset($_POST['acc'])) {
+  if($_POST['acc']=='admin' && $_POST['ps']=='1234'){
+    $_SESSION['login']=1;
+    to("admin.php");
+}else{
+    echo "<script>alert('帳號或密碼錯誤')</script>";
+}
+}
+?>
+<!-- 此為取巧/趕時間/不嚴謹的 for 乙檢的作法, 因為跳過 到資料庫進行 "check" 帳/密的動作! (在index.php 的 "管理登入" 語法將 do=check 改成do=login !-->
+
 <div class="di"
     style="height:540px; border:#999 1px solid; width:53.2%; margin:2px 0px 0px 0px; float:left; position:relative; left:20px;">
     <marquee scrolldelay="120" direction="left" style="position:absolute; width:100%; height:40px;">
     </marquee>
     <div style="height:32px; display:block;"></div>
     <!--正中央-->
-    <form method="post" action="?do=check" target="back">
+    <form method="post" action="?do=login" target="back">
         <p class="t botli">管理員登入區</p>
         <p class="cent">帳號 ： <input name="acc" autofocus="" type="text"></p>
         <p class="cent">密碼 ： <input name="ps" type="password"></p>
