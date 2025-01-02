@@ -28,7 +28,7 @@
                 <input type="checkbox" name="del[]" value="<?=$row['id'];?>">
             </td>
         </tr>
-
+        <input type="hidden" name="id[]" value="<?=$row['id'];?>">
         <?php   endforeach;  ?>
     </table>
     <div class="ct">
@@ -36,19 +36,41 @@
      if(($now-1)>0){
         echo "<a href='?do=news&p=".($now-1)."'> &lt;</a>";
     }
-
     for($i=1;$i<=$pages;$i++){
         $size=($i==$now)?"24px":"16px";
         echo "<a href='?do=news&p=$i' style='font-size:$size'> $i </a>";
     }
-
     if(($now+1)<=$pages){
         echo "<a href='?do=news&p=".($now+1)."'> &gt;</a>";
     }
-?>
+     ?>
     </div>
 
     <div class="ct">
         <button onclick="edit()">確定修改</button>
     </div>
 </fieldset>
+
+<script>
+function edit() {
+    /* let ids=$("input[name='id[]']")
+              .map((idx,item)=>{
+                 return $(item).val()
+               }).get(); */
+    let ids = $("input[name='id[]']")
+        .map((idx, item) => $(item).val()).get();
+    let del = $("input[name='del[]']:checked")
+        .map((idx, item) => $(item).val()).get();
+    let sh = $("input[name='sh[]']:checked")
+        .map((idx, item) => $(item).val()).get();
+
+    $.post("./api/edit_news.php", {
+        ids,
+        sh,
+        del
+    }, (res) => {
+        //console.log(res);
+        location.reload();
+    })
+}
+</script>
