@@ -23,6 +23,8 @@
 
 <script>
 getList(1)
+// 預設 內容顯示type(1)
+
 $(".type").on('click', function() {
     // console.log(e) 
     $("#type").text($(this).text())
@@ -41,5 +43,11 @@ function getList(type) {
     /* $.get("./api/get_list.php",{type},(list)=>{
         $("#postList").html(list)
     }) */
+}
+
+function getPost(id) {
+    $("#postList").load("./api/get_post.php", {
+        id
+    })
 }
 </script>
