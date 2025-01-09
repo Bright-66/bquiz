@@ -14,6 +14,7 @@
 $rows=$Poster->all(" order by rank");
 foreach($rows as $idx => $row):
     $prev=($idx!=0)?$rows[$idx-1]['id']:$row['id'];
+    // 利用"索引值"來進行排序
     $next=($idx!=(count($rows)-1))?$rows[$idx+1]['id']:$row['id'];
 ?>
             <div style="display:flex; justify-content:space-between;text-align:center
@@ -54,7 +55,6 @@ endforeach;
     </form>
 </div>
 
-
 <script>
 $(".sw").on("click", function() {
 
@@ -87,6 +87,4 @@ $(".sw").on("click", function() {
             <input type="reset" value="重置">
         </div>
     </form>
-
-
 </div>
