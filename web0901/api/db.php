@@ -177,4 +177,7 @@ if(!isset($_SESSION['view'])){
     $total['total']++;
     $Total->save($total);
 }
+// 計算載入 訪站人數
+// 用"SESSION"狀態語法, 紀錄"訪站狀態"計算次數 
+
 ?>
