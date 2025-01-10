@@ -63,15 +63,27 @@
 .icons {
     width: 320px;
     display: flex;
+    overflow: hidden;
+    position: relative;
 }
 
 .icon {
     width: 80px;
     height: 100px;
-    background: #ccc;
+    flex-shrink: 0;
+    text-align: center;
+    position: relative;
+}
+
+.icon img {
+    width: 70px;
+    height: 80px;
+}
+
+.icon div {
+    font-size: 12px;
 }
 </style>
-
 
 <div class="half" style="vertical-align:top;">
     <h1>預告片介紹</h1>
@@ -93,10 +105,15 @@
             <div class="controls">
                 <div class='left'></div>
                 <div class='icons'>
-                    <div class="icon"></div>
-                    <div class="icon"></div>
-                    <div class="icon"></div>
-                    <div class="icon"></div>
+                    <?php
+foreach($posters as $idx => $poster):
+    ?>
+                    <div class="icon">
+                        <img src="./upload/<?=$poster['img'];?>">
+                    </div>
+                    <div><?=$poster['name'];?>
+                    </div>
+                    <?php endforeach;?>
                 </div>
                 <div class='right'></div>
             </div>
@@ -106,6 +123,7 @@
 
 <script>
 $(".poster").eq(0).show();
+// 呼叫第1張海報(索引值=0),然後show出來! 
 </script>
 
 
