@@ -6,7 +6,12 @@ class DB{
     protected $dsn="mysql:host=localhost;charset=utf8;dbname=db19";
     protected $pdo;
     protected $table;
-
+    public static $level=[
+        1=>'普遍級',
+        2=>'輔導級',
+        3=>'保護級',
+        4=>'限制級'
+    ];
     function __construct($table){
         $this->table=$table;
         $this->pdo=new PDO($this->dsn,'root','');
@@ -160,7 +165,6 @@ function dd($array){
 function to($url){
     header("location:".$url);
 }
-
 
 $Poster=new DB('posters');   
 $Movie=new DB('movies');
