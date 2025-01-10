@@ -57,14 +57,15 @@
                     <div>上映日期:<?=$row['ondate'];?></div>
                 </div>
                 <div style="width:100%;" class="ct">
-                    <button>劇情簡介</button><button>線上訂票</button>
+                    <button onclick="location.href='?do=intro&id=<?=$row['id'];?>'">劇情簡介</button>
+                    <button onclick="location.href='?do=order&id=<?=$row['id'];?>'">線上訂票</button>
                 </div>
             </div>
             <?php
             endforeach;
             ?>
         </div>
-        <div class="ct a">
+        <div class=" ct a">
             <?php 
 
                 if(($now-1)>0){
