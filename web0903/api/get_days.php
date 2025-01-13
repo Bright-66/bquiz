@@ -1,5 +1,4 @@
 <?php include_once "db.php";
-
 $id=$_GET['movie'];
 $row=$Movie->find($id);
 $ondate=strtotime($row['ondate']);
@@ -12,4 +11,3 @@ for($i=$passDay;$i<3;$i++){
     echo $date;
     echo "</option>";
 }
-?>
