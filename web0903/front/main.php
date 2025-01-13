@@ -176,6 +176,17 @@ $(".left,.right").on("click", function() {
         right: p * 80
     });
 })
+
+$(".icons").hover(
+    function() {
+        clearInterval(slider);
+    },
+    function() {
+        slider = setInterval(() => {
+            sliders();
+        }, 2500);
+    }
+)
 </script>
 
 <div class="half">
@@ -251,7 +262,6 @@ $(".left,.right").on("click", function() {
                 if(($now+1)<=$pages){
                     echo "<a href='?p=".($now+1)."' > > </a>";
                 }
-
 
             ?>
 
