@@ -155,9 +155,20 @@ function sliders() {
     }
 
 }
+let total = $(".icon").length;
+// total決定於預告片有幾張
+let p = 0;
+$(".left,.right").on("click", function() {
+    if ((p + 1) <= (total - 4)) {
+        p++
+        // 動畫點選的停止條件
+
+        $(".icon").animate({
+            right: 80 * p
+        });
+    }
+})
 </script>
-
-
 
 <div class="half">
     <h1>院線片清單</h1>
