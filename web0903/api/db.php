@@ -1,7 +1,6 @@
 <?php
-date_default_timezone_set("Asia/Taipei");
-// 設定網站的時區
 
+date_default_timezone_set("Asia/Taipei");
 session_start();
 
 class DB{
@@ -167,6 +166,7 @@ function dd($array){
 function to($url){
     header("location:".$url);
 }
+
 
 $Poster=new DB('posters');   
 $Movie=new DB('movies');

@@ -13,8 +13,8 @@
 }
 
 .order-form td:nth-child(2) {
-    width: 300px;
     text-align: left;
+    width: 300px;
 }
 
 .order-form td {
@@ -25,20 +25,19 @@
     background: #999;
 }
 </style>
-
 <h3 class='ct'>線上訂票</h3>
 <form action="#">
     <table class="order-form">
         <tr>
-            <td>電影:</td>
+            <td>電影：</td>
             <td><select name="movie" id="movie"></select></td>
         </tr>
         <tr>
-            <td>日期:</td>
+            <td>日期：</td>
             <td><select name="date" id="date"></select></td>
         </tr>
         <tr>
-            <td>場次:</td>
+            <td>場次：</td>
             <td><select name="session" id="session"></select></td>
         </tr>
         <tr>
@@ -49,3 +48,47 @@
         </tr>
     </table>
 </form>
+
+<script>
+getMovies();
+let id = new URLSearchParams(location.href).get('id');
+console.log(id);
+
+$("#movie").on("change", function() {
+    getDays();
+})
+
+$("#date").on("change", function() {
+    getSessions();
+})
+
+
+function getMovies() {
+    $.get("api/get_movies.php", function(movies) {
+        console.log(movies);
+        $("#movie").html(movies);
+
+        if (parseInt(id) > 0) {
+            $(`#movie option[value='${id}']`).prop('selected', true);
+        }
+        getDays();
+    })
+}
+
+function getDays() {
+    $.get("api/get_days.php", {
+        movie: $("#movie").val()
+    }, function(days) {
+        $("#date").html(days);
+    })
+}
+
+function getSessions() {
+    $.get("api/get_sessions.php", {
+        movie: $("#movie").val(),
+        date: $("#date").val()
+    }, function(sessions) {
+        $("#session").html(sessions);
+    })
+}
+</script>
