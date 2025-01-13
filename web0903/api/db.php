@@ -1,4 +1,6 @@
 <?php
+date_default_timezone_set("Asia/Taipei");
+// 設定網站的時區
 
 session_start();
 
