@@ -159,14 +159,22 @@ let total = $(".icon").length;
 // total決定於預告片有幾張
 let p = 0;
 $(".left,.right").on("click", function() {
-    if ((p + 1) <= (total - 4)) {
-        p++
-        // 動畫點選的停止條件
-
-        $(".icon").animate({
-            right: 80 * p
-        });
+    if ($(this).hasClass('left')) {
+        /* if(p-1>=0){
+            p--;
+        } */
+        p = (p - 1 >= 0) ? p - 1 : 0;
+    } else {
+        /* if(p+1<=total-4){
+            p++;
+        } */
+        p = (p + 1 <= total - 4) ? p + 1 : total - 4;
     }
+    // 動畫點選的停止條件
+
+    $(".icon").animate({
+        right: p * 80
+    });
 })
 </script>
 
