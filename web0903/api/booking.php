@@ -52,7 +52,7 @@
          for($i=0;$i<20;$i++){
             echo "<div class='seat null'>";
             echo floor($i/5)+1  ."排".($i%5+1)."號";
-            echo "<input type='checkbox' value='$i'>";
+            echo "<input type='checkbox' class='chk' value='$i'>";
             echo "</div>";
          }
 ?>
@@ -68,3 +68,31 @@
     </div>
 
 </div>
+
+<script>
+let seats = new Array();
+// let num = {
+//     1: '一',
+//     2: '二',
+//     3: '三',
+//     4: '四'
+// };
+
+
+$(".chk").on("change", function() {
+    if ($(this).prop('checked')) {
+        if (seats.length > 3) {
+            alert("最多只能選四張票");
+            $(this).prop('checked', false)
+        } else {
+            seats.push($(this).val())
+        }
+    } else {
+        seats.splice(seats.indexOf($(this).val()), 1)
+    }
+    $("#tickets").text(seats.length)
+    //$("#tickets").text(num[seats.length])
+    //console.log(seats)
+
+})
+</script>
