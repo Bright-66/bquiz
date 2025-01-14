@@ -99,8 +99,8 @@ $(".chk").on("change", function() {
 function checkout() {
     movie.seats = seats;
     $.post("api/checkout.php", movie, function(res) {
-        console.log(res)
-
+        // console.log(res)
+        $("#mm").html(res);
     })
 
 }
