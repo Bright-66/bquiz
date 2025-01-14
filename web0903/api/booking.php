@@ -95,4 +95,13 @@ $(".chk").on("change", function() {
     //console.log(seats)
 
 })
+
+function checkout() {
+    movie.seats = seats;
+    $.post("api/checkout.php", movie, function(res) {
+        console.log(res)
+
+    })
+
+}
 </script>
