@@ -8,14 +8,14 @@
 
     <title>┌精品電子商務網站」</title>
     <link href="./css/css.css" rel="stylesheet" type="text/css">
+    <script src="./js/jquery-3.4.1.min.js"></script>
     <script src="./js/js.js"></script>
 </head>
 
 <body>
-    <iframe name="back" style="display:none;"></iframe>
     <div id="main">
         <div id="top">
-            <a href="?">
+            <a href="index.php">
                 <img src="./icon/0416.jpg">
             </a>
             <img src="./icon/0417.jpg">
@@ -32,17 +32,17 @@
             </div>
         </div>
         <div id="right">
+            <?php 
+        $do=$_GET['do']??'admin';
+        $file="back/".$do.".php";
+        if(file_exists($file)){
+            include $file;
+        }else{
+            include "back/admin.php";
+        }
 
-            <?php
-$do=$_GET['do']??'main';
-$file="back/".$do.".php";
-if(file_exists($file)){
-    include $file;
-}else{
-    include "back/admin.php";
-}
-?>
 
+        ?>
         </div>
         <div id="bottom" style="line-height:70px; color:#FFF; background:url(icon/bot.png);" class="ct">
             頁尾版權 : </div>

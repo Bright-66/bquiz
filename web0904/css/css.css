@@ -44,13 +44,14 @@ body {
 	display: inline-block;
 	width: 71%;
 	padding: 2%;
-	min-height: 550px;
+	height: 550px;
 	border: #000 1px solid;
 	overflow: auto;
 }
 
 #bottom {
 	height: 70px;
+	background: url(icon/bot.png);
 	background-size: cover;
 }
 
@@ -65,7 +66,7 @@ body {
 }
 
 .all td {
-	min-width: 100px;
+	min-width: 50px;
 	padding: 10px;
 }
 
