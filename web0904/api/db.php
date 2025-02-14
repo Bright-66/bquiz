@@ -4,7 +4,7 @@ session_start();
 
 
 class DB{
-protected $dsn="mysql:host=localhost;charset=utf8;dbname=db01";
+protected $dsn="mysql:host=localhost;charset=utf8;dbname=db18";
 protected $pdo;
 protected $table;
 
@@ -18,7 +18,7 @@ function all(...$arg){
     if(!empty($arg[0]) && is_array($arg[0])){
         $tmp=$this->arrayToSQL($arg[0]);
         $sql .=" where ".join(" && ",$tmp);
-    }else if(is_string($arg[0])){
+    }else if(isset($arg[0]) && is_string($arg[0])){
         $sql .=$arg[0];
     }
 
@@ -67,9 +67,9 @@ function del($array){
         $sql .= " where `id`='$array'";
     }
 
-    return $this->exec($sql);
+    return $this->pdo->exec($sql);
 }
-function count(...$array){
+function count(...$arg){
     $sql="select count(*) from $this->table ";
     if(!empty($arg[0]) && is_array($arg[0])){
         $tmp=$this->arrayToSQL($arg[0]);
@@ -81,7 +81,7 @@ function count(...$array){
     if(!empty($arg[1])){
         $sql .= $arg[1];
     }
-
+   // echo $sql;
     return $this->pdo->query($sql)->fetchColumn();
 }
 
@@ -98,7 +98,7 @@ function arrayToSQL($array){
 function fetch_one($sql){
     return $this->pdo->query($sql)->fetch(PDO::FETCH_ASSOC);
 }
-function fetch_all(){
+function fetch_all($sql){
     return $this->pdo->query($sql)->fetchALL(PDO::FETCH_ASSOC);
 }
 
@@ -119,3 +119,10 @@ function dd($array){
     print_r($array);
     echo "</pre>";
 }
+
+
+$Mem=new DB("members");
+$Admin=new DB ("admins");
+$Bot=new DB("bottom");
+$Type=new DB("types");
+$Item=new DB("items");
