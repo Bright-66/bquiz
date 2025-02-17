@@ -47,16 +47,34 @@
                 <?php 
                     }
                 ?>
-
             </div>
-
-           
         </div>
 
         <div id="left" class="ct">
             <div style="min-height:400px;">
+                <a href="?type=0">全部商品</a>
+                <?php
+$bigs=$Type->all(['big_id'=>0]);
+foreach($bigs as $big){
+    echo "<div class='ww'>";
+    echo "<a href='?type={$big['id']}'>";
+    echo $big['name'];
+    echo "</a>";
 
+if($Type->count(['big_id'=>$big['id']])>0){
+    $mids=$Type->all(['big_id'=>$big['id']]);
+    echo "<div class='s'>";
+    foreach($mids as $mid){
+        echo "<a href='?type={mid['id']}' style='background-color:lightblue;'>";
+        echo $mid['name'];
+        echo "</a>";
+    }
+    echo "</div>";
+}
 
+    echo "</div>";
+}
+?>
             </div>
             <span>
                 <div>進站總人數</div>
@@ -65,7 +83,7 @@
             </span>
         </div>
         <div id="right">
-        <?php 
+            <?php 
         $do=$_GET['do']??'main';
         $file="front/".$do.".php";
         if(file_exists($file)){
@@ -78,7 +96,7 @@
         ?>
         </div>
         <div id="bottom" style="line-height:70px;background:url(icon/bot.png); color:#FFF;" class="ct">
-        <?=$Bot->find(1)['bottom'];?></div>
+            <?=$Bot->find(1)['bottom'];?></div>
     </div>
 
 </body>
