@@ -3,7 +3,7 @@
 session_start();
 
 class DB{
-    protected $dsn="mysql:host=localhost;charset=utf8;dbname=db13";
+    protected $dsn="mysql:host=localhost;charset=utf8;dbname=db09";
     protected $pdo;
     protected $table;
 static public $type=[
@@ -152,7 +152,7 @@ function __construct($table){
 }
 
 function q($sql){
-    $pdo=new PDO("mysql:host=localhost;charset=utf8;dbname=db13",'root','');
+    $pdo=new PDO("mysql:host=localhost;charset=utf8;dbname=db09",'root','');
     return $pdo->query($sql)->fetchAll();
 }
 

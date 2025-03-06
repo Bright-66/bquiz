@@ -29,6 +29,7 @@
         $now=$_GET['p']??1;
         $start=($now-1)*$div;
         $rows=$News->all(['sh'=>1]," order by `likes` desc Limit $start,$div");
+        // 按讚 的排序->order by likes
         foreach($rows as $row):
         ?>
         <tr>

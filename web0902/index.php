@@ -1,4 +1,4 @@
-﻿<?php include_once "api/db.php";?>
+﻿<?php include_once "api/db.php"; ?>
 
 <!DOCTYPE html
     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -9,6 +9,11 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
     <title>健康促進網</title>
+    <!-- 直接"套用Boostrap的link, 再到Bs官網下載"Bootstrap.css & Bootstrap.js"放到css資料夾
+      接著看官網指令,修改css 可修改改裝網頁的外觀!" -->
+
+    <!-- <link rel="stylesheet" href="./css/bootstrap.css"> -->
+
     <link href="./css/css.css" rel="stylesheet" type="text/css">
     <script src="./js/jquery-1.9.1.min.js"></script>
     <script src="./js/js.js"></script>
@@ -21,8 +26,8 @@
     </div>
     <div id="all">
         <div id="title">
-            <?=date("m 月 d 號 l");?> | 今日瀏覽: <?=$Total->find(['date'=>date("Y-m-d")])['total'];?>
-            | 累積瀏覽: <?=$Total->sum('total');?>
+            <?php echo date("m 月 d 號 l"); ?> | 今日瀏覽:<?php echo $Total->find(['date' => date("Y-m-d")])['total']; ?>
+            | 累積瀏覽:<?php echo $Total->sum('total'); ?>
 
             <a href="index.php" style="float:right">回首頁</a>
 
@@ -50,28 +55,28 @@
                         </marquee>
                     </div>
                     <span style="width:23%; display:inline-block;">
-                        <?php if(!isset($_SESSION['user'])):?>
+                        <?php if (! isset($_SESSION['user'])): ?>
                         <a href="index.php?do=login">會員登入</a>
                         <!-- ?do的?表示@當前頁  -->
-                        <?php else:?>
-                        歡迎,<?=$_SESSION['user'];?>
-                        <?php if($_SESSION['user']=='admin'):?>
+                        <?php else: ?>
+                        歡迎,<?php echo $_SESSION['user']; ?>
+<?php if ($_SESSION['user'] == 'admin'): ?>
                         <br><button onclick="location.href='admin.php'">管理</button>
-                        <?php endif;?>
+                        <?php endif; ?>
                         <button onclick="logout()">登出</button>
-                        <?php endif;?>
+                        <?php endif; ?>
                     </span>
                 </div>
                 <?php
-				$do=$_GET['do']??'main';
-				$file="front/".$do.".php";
-				if(file_exists($file)){
-					include $file;
-				}else{
-					include "front/main.php";
-				}
+                    $do   = $_GET['do'] ?? 'main';
+                    $file = "front/" . $do . ".php";
+                    if (file_exists($file)) {
+                        include $file;
+                    } else {
+                        include "front/main.php";
+                    }
 
-			?>
+                ?>
             </div>
         </div>
         <div id="bottom">
